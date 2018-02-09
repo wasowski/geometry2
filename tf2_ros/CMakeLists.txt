@@ -132,4 +132,6 @@ add_dependencies(tests ${PROJECT_NAME}_test_time_reset)
 add_rostest(test/transform_listener_unittest.launch)
 add_rostest(test/transform_listener_time_reset_test.launch)
 
+catkin_add_nosetests(test/bug_witness.py)
+
 endif()
