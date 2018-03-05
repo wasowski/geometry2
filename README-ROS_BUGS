@@ -1,0 +1,23 @@
+Repository where this bug witness patch is developed:
+https://github.com/wasowski/geometry2_167
+
+The problem with using static_transform_publisher
+(static_transform_broadcaster_program.cpp) directly as a test node is that it
+affects the number of parameters that are added to the test node.  The last
+parameter is provided for gtest, and this changes the behavior of the code
+being tested (the number of parameters passed to main are key in this case).
+
+This is why we created a dummy test node, and run the publisher as a supporting
+node.  This way the static_transform_publisher is run like in a normal release
+launch.  The existance of a (dummy) test allows to run this launch file as
+rostest. Otherwise rostest finds not tests, and reports no failure in
+static_transform_publisher. It seems it does not even start it.
+
+Still, even in this case there are some renaming parameters appended and
+argv[argc] at the point of assertion is not null (likely because argc has been
+decremented during ROS::init).
+
+The bug description is clearly wrong: there is no crash. Just a wrong error
+message, because printf no longer crashes on "(null)" -- technically this leads
+to undefined behaviour, but modern implementations play safe, and check for NULL.
+

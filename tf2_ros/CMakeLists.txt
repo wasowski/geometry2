@@ -114,6 +114,7 @@ add_executable(${PROJECT_NAME}_test_listener EXCLUDE_FROM_ALL test/listener_unit
 add_dependencies(${PROJECT_NAME}_test_listener tf2_msgs_gencpp)
 add_executable(${PROJECT_NAME}_test_time_reset EXCLUDE_FROM_ALL test/time_reset_test.cpp)
 add_dependencies(${PROJECT_NAME}_test_time_reset tf2_msgs_gencpp)
+add_executable(${PROJECT_NAME}_dummy_test EXCLUDE_FROM_ALL test/dummy_test.cpp)
 target_link_libraries(${PROJECT_NAME}_test_listener
   ${PROJECT_NAME}
   ${catkin_LIBRARIES}
@@ -126,12 +127,19 @@ target_link_libraries(${PROJECT_NAME}_test_time_reset
   ${GTEST_LIBRARIES}
 )
 
+target_link_libraries(${PROJECT_NAME}_dummy_test
+  ${PROJECT_NAME}
+  ${catkin_LIBRARIES}
+  ${GTEST_LIBRARIES}
+)
+
 add_dependencies(tests ${PROJECT_NAME}_test_listener)
 add_dependencies(tests ${PROJECT_NAME}_test_time_reset)
+add_dependencies(tests ${PROJECT_NAME}_static_transform_publisher)
+add_dependencies(tests ${PROJECT_NAME}_dummy_test)
 
 add_rostest(test/transform_listener_unittest.launch)
 add_rostest(test/transform_listener_time_reset_test.launch)
-
-catkin_add_nosetests(test/bug_witness.py)
+add_rostest(test/bug_witness.test)
 
 endif()
