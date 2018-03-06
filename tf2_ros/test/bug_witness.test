@@ -1,8 +1,18 @@
 <launch>
- <node name="static_transform_publisher1" pkg="tf2_ros" type="static_transform_publisher" args="1 2 3 4 5 6 a 7" required="true" output="screen"/>
- <node name="static_transform_publisher2" pkg="tf2_ros" type="static_transform_publisher" args="1 2 3 4 5 6 7 8 9" required="true" output="screen"/>
- <!-- TODO: the last two will fail after patch, but for another reason! -->
- <node name="static_transform_publisher3" pkg="tf2_ros" type="static_transform_publisher" args="1 2 3 4 5 6 7 8 8" required="true" output="screen"/>
- <node name="static_transform_publisher4" pkg="tf2_ros" type="static_transform_publisher" args="1 2 3 4 5 6 7 7" required="true" output="screen"/>
- <test test-name="witness_b4dc23c" pkg="tf2_ros" type="tf2_ros_dummy_test"/>
+ <node name="static_transform_publisher1" pkg="tf2_ros" 
+       type="static_transform_publisher" 
+       args="1 2 3 4 5 6 a 7" 
+       required="true" output="screen"/>
+ <node name="static_transform_publisher2" pkg="tf2_ros" 
+       type="static_transform_publisher" 
+       args="1 2 3 4 5 6 7 8 9" 
+       required="true" output="screen"/>
+ <node name="static_transform_publisher3" pkg="tf2_ros" 
+       type="static_transform_publisher" args="1 2 3 4 5 6 7 8 8" 
+       required="true" output="screen"/>
+ <node name="static_transform_publisher4" pkg="tf2_ros" 
+       type="static_transform_publisher" args="1 2 3 4 5 6 7 7" 
+       required="true" output="screen"/>
+ <test test-name="witness_b4dc23c" pkg="tf2_ros" 
+       type="tf2_ros_dummy_test"/>
 </launch>
