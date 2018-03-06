@@ -1,8 +1,5 @@
 #include <cstdio>
-#include <stdarg.h> 
-#include <cstring>
-#include "ros/assert.h"
-#include "tf2_ros/bug_witness.h"
+#include "ros/ros.h"
 
 namespace bug_witness {
 
