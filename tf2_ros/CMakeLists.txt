@@ -46,6 +46,7 @@ add_library(${PROJECT_NAME}
   src/buffer_server.cpp
   src/transform_broadcaster.cpp
   src/static_transform_broadcaster.cpp
+  test/bug_witness.cpp
 )
 add_dependencies(${PROJECT_NAME} tf2_msgs_gencpp)
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES})
