@@ -33,7 +33,7 @@
 
 // Redefine ROS_FATAL to intercept the problem
 
-void not_null (char ** argv, ...)
+void validate (char ** argv, ...)
 {
   // Only works for this file at this time (three arguments in both call sites)
   va_list valist;
@@ -55,7 +55,7 @@ void not_null (char ** argv, ...)
 }
 
 #undef ROS_FATAL
-#define ROS_FATAL(...) { not_null(argv, __VA_ARGS__);\
+#define ROS_FATAL(...) { validate(argv, __VA_ARGS__);\
                          ROS_LOG(::ros::console::levels::Fatal, ROSCONSOLE_DEFAULT_NAME, __VA_ARGS__); }
 
 int main(int argc, char ** argv)
